@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import AuthLayout from "@/components/AuthLayout";
 import { signup } from "@/lib/auth";
 
-export default function SignupPage() {
+function SignupForm() {
   const searchParams = useSearchParams();
   const next = searchParams.get("next") || "/";
   const loginHref = `/login?next=${encodeURIComponent(next)}`;
@@ -132,5 +132,13 @@ export default function SignupPage() {
         </button>
       </form>
     </AuthLayout>
+  );
+}
+
+export default function SignupPage() {
+  return (
+    <Suspense fallback={null}>
+      <SignupForm />
+    </Suspense>
   );
 }
