@@ -1,0 +1,25 @@
+# --- Backend (Python) ---
+backend/.env
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+*.pyc
+
+# --- Provided jobs dataset (large file, not source code) ---
+# Place the downloaded dataset JSON anywhere under backend/data/, or name
+# it one of the patterns below -- it stays local only, never pushed to
+# GitHub. real_dataset_sample.json is kept tracked as a small reference
+# sample for reviewers.
+backend/data/
+backend/scripts/jobs.json
+backend/scripts/jobs_dataset.json
+backend/*.json
+
+# --- Frontend (Next.js) ---
+frontend/node_modules/
+frontend/.next/
+frontend/.env.local
+
+# --- OS / Editor ---
+.DS_Store
+*.log
