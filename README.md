@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🧭 ProjectBoard — AI-Powered Job Board
+# AI-Powered Job Board
 
 **Round 1 Technical Assignment — Research Analyst, AlmaBetter R&D**
 
@@ -12,7 +12,7 @@ Aggregation → AI Tagging → Resume Matching → Conversational AI, in one dep
 [![AI](https://img.shields.io/badge/AI-Google%20Gemini-8E75FF)](.)
 [![Deploy](https://img.shields.io/badge/Deployed-Vercel%20%2B%20Render-black)](.)
 
-**🔗 Live Prototype:** _[paste your deployed Vercel URL here]_
+**🔗 Deployment Web App Link:** _[paste your deployed Vercel URL here]_
 **🎥 Explanation Video:** _[paste your Drive/YouTube link here — "Anyone with the link can view"]_
 
 </div>
