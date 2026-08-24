@@ -3,7 +3,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
 export const metadata = {
-  title: "ProjectBoard — Project-Based Hiring",
+  title: "JobBoard",
   description: "AI-powered job discovery across LinkedIn, Naukri, Indeed and Internshala.",
 };
 
