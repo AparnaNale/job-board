@@ -21,7 +21,7 @@ from typing import Optional
 from database import get_db
 from models import Job, ResumeProfile, User
 from services.resume_parser import extract_text, extract_profile, extract_profile_ai
-from services.recommender import recommend_jobs
+from services.recommender import rank_job_ids
 from dependencies import get_current_user_optional
 
 router = APIRouter(prefix="/api/resume", tags=["resume"])
@@ -82,11 +82,27 @@ async def upload_resume(
     db.commit()
     db.refresh(saved_profile)
 
-    all_jobs = db.query(Job).all()
-    ranked = recommend_jobs(profile.get("skills", []), all_jobs)
+    # Memory-conscious two-pass lookup instead of `db.query(Job).all()`:
+    # on a 512MB container, loading every job's full description text
+    # (potentially thousands of rows) just to compute a tag-overlap score
+    # was enough to exceed the memory limit and get the process killed
+    # (see services/recommender.py for details). Pass 1 pulls only
+    # (id, tags) for every job -- a small fraction of the memory of full
+    # rows -- and scores those. Pass 2 fetches full details for only the
+    # handful of ids that actually made the top_n cut.
+    id_tag_pairs = db.query(Job.id, Job.tags).all()
+    ranked_ids = rank_job_ids(profile.get("skills", []), id_tag_pairs)
+
+    score_by_id = dict(ranked_ids)
+    if ranked_ids:
+        top_jobs = db.query(Job).filter(Job.id.in_(score_by_id.keys())).all()
+    else:
+        top_jobs = []
+    # in_() doesn't preserve order, so re-sort to match the ranking
+    top_jobs.sort(key=lambda job: score_by_id[job.id], reverse=True)
 
     recommendations = []
-    for job, score in ranked:
+    for job in top_jobs:
         job_out = {
             "id": job.id,
             "title": job.title,
@@ -97,7 +113,7 @@ async def upload_resume(
             "apply_link": job.apply_link,
             "tags": job.tags,
             "experience_level": job.experience_level,
-            "match_score": score,
+            "match_score": score_by_id[job.id],
         }
         recommendations.append(job_out)
 
