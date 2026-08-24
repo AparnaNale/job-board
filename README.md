@@ -2,18 +2,13 @@
 
 # AI-Powered Job Board
 
-**Round 1 Technical Assignment — Research Analyst, AlmaBetter R&D**
+** Technical Assignment — Research Analyst, AlmaBetter R&D**
 
 Aggregation → AI Tagging → Resume Matching → Conversational AI, in one deployed product.
 
-[![Frontend](https://img.shields.io/badge/Frontend-Next.js%2014-000000?logo=nextdotjs)](.)
-[![Backend](https://img.shields.io/badge/Backend-FastAPI-009688?logo=fastapi)](.)
-[![DB](https://img.shields.io/badge/Database-Postgres%20%2F%20Supabase-3ECF8E?logo=supabase)](.)
-[![AI](https://img.shields.io/badge/AI-Google%20Gemini-8E75FF)](.)
-[![Deploy](https://img.shields.io/badge/Deployed-Vercel%20%2B%20Render-black)](.)
 
-**🔗 Deployment Web App Link:** _[paste your deployed Vercel URL here]_
-**🎥 Explanation Video:** _[paste your Drive/YouTube link here — "Anyone with the link can view"]_
+**🔗 Deployment Web App Link:** https://job-board-seven-jade.vercel.app/
+**🎥 Explanation Video:** https://drive.google.com/file/d/19VZBj9CEy76LPPGxa7WxR9lsH5GcJxqj/view?usp=sharing
 
 </div>
 
