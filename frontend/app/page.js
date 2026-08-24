@@ -243,7 +243,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-14 sm:pt-20 pb-24 sm:pb-28">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-6 items-center">
             <div className="text-center lg:text-left">
-              <p className="font-mono text-xs tracking-[0.2em] text-violet font-semibold mb-4 uppercase">
+              <p className="font-mono text-xs tracking-[0.2em] text-violet font-semibold mb-3 uppercase">
                 AI job aggregator
               </p>
               <h1 className="font-serif text-4xl sm:text-5xl lg:text-[3.4rem] font-medium leading-[1.15] text-ink">
@@ -293,27 +293,32 @@ export default function HomePage() {
         </svg>
       </section>
 
-      {/* HOW IT WORKS — faint dot-grid texture fading out from center, plus
-          two soft blurred color blobs, so the section reads as more than a
-          flat white slab. Purely decorative (aria-hidden), sits behind the
-          content via z-index. */}
-      <section id="how-it-works" className="scroll-mt-20 border-y border-line bg-white relative overflow-hidden">
-        <div
+      {/* HOW IT WORKS — layered wavy gray background (two soft curved
+          bands at different tints/opacity) instead of a flat slab, so the
+          section reads as a distinct visual "beat" between the hero and
+          the feature grid. Purely decorative (aria-hidden), sits behind
+          the content via z-index. */}
+      <section id="how-it-works" className="scroll-mt-20 border-y border-line bg-[#F6F5F9] relative overflow-hidden">
+        <svg
           aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{
-            backgroundImage: "radial-gradient(#DCD4F0 1px, transparent 1px)",
-            backgroundSize: "24px 24px",
-            WebkitMaskImage: "radial-gradient(ellipse 70% 65% at 50% 40%, black, transparent)",
-            maskImage: "radial-gradient(ellipse 70% 65% at 50% 40%, black, transparent)",
-          }}
-        />
-        <div aria-hidden className="pointer-events-none absolute -top-28 -left-20 w-72 h-72 rounded-full bg-violet/10 blur-3xl" />
-        <div aria-hidden className="pointer-events-none absolute -bottom-28 -right-16 w-72 h-72 rounded-full bg-mint/10 blur-3xl" />
+          className="pointer-events-none absolute inset-0 w-full h-full"
+          viewBox="0 0 1440 560"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,130 C220,190 380,60 620,100 C860,140 1040,70 1440,140 L1440,560 L0,560 Z"
+            fill="#ECE9F2"
+          />
+          <path
+            d="M0,230 C260,180 460,300 720,240 C980,180 1180,270 1440,220 L1440,560 L0,560 Z"
+            fill="#E2DEEC"
+            opacity="0.75"
+          />
+        </svg>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20 relative">
           <div className="text-center mb-12">
-            <p className="font-mono text-xs tracking-[0.2em] text-violet uppercase mb-3">
+            <p className="font-mono text-xs tracking-[0.2em] text-violet font-semibold uppercase mb-3">
               How it works
             </p>
             <h2 className="font-display text-2xl sm:text-3xl font-bold">
@@ -344,9 +349,9 @@ export default function HomePage() {
           violet/mint icon tints, and a faint numbered watermark so the
           four cards read as more than four identical white boxes. */}
       <section className="bg-surface">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
           <div className="text-center mb-12">
-            <p className="font-mono text-xs tracking-[0.2em] text-violet uppercase mb-3">
+            <p className="font-mono text-xs tracking-[0.2em] text-violet font-semibold uppercase mb-3">
               Why ProjectBoard
             </p>
             <h2 className="font-display text-2xl sm:text-3xl font-bold mb-3">
@@ -405,10 +410,10 @@ export default function HomePage() {
           showing a preview of the first page. "Load more roles" links to
           the full /jobs page (with sidebar filters) instead of fetching
           further pages inline here. */}
-      <section id="jobs" className="scroll-mt-20 max-w-6xl mx-auto px-4 sm:px-6 py-16">
+      <section id="jobs" className="scroll-mt-20 max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
           <div>
-            <p className="font-mono text-xs tracking-[0.2em] text-violet uppercase mb-2">
+            <p className="font-mono text-xs tracking-[0.2em] text-violet font-semibold uppercase mb-3">
               Live listings
             </p>
             <h2 className="font-display text-2xl sm:text-3xl font-bold">
@@ -506,84 +511,83 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section id="faq" className="scroll-mt-20 border-t border-line bg-gradient-to-b from-surface to-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
-          <div className="text-center mb-10">
-            <p className="font-mono text-xs tracking-[0.2em] text-violet font-semibold uppercase mb-3">
-              You want to know
-            </p>
-            <h2 className="font-serif text-3xl sm:text-4xl font-medium text-ink">
-              Frequently Asked Questions
-            </h2>
-          </div>
-          <div className="space-y-4">
-            {FAQS.map((item, i) => (
-              <details
-                key={item.q}
-                open={i === 0}
-                className="group relative rounded-2xl bg-white shadow-sm shadow-ink/[0.03] overflow-hidden"
-              >
-                <span
-                  aria-hidden
-                  className="absolute left-0 top-0 bottom-0 w-1 bg-line group-open:bg-violet transition-colors"
-                />
-                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none font-semibold text-ink pl-6 pr-5 sm:pr-6 py-5">
-                  {item.q}
-                  <span className="text-ink shrink-0 w-5 h-5 group-open:rotate-180 transition-transform">
-                    <ChevronDownIcon />
-                  </span>
-                </summary>
-                <p className="text-sm sm:text-base text-slate leading-relaxed pl-6 pr-6 sm:pr-10 pb-6">
-                  {item.a}
-                </p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FINAL CTA — lifted off the white page into its own gradient panel
-          (dot texture + two color blobs, same decorative language as the
-          how-it-works section above) so it closes the page with some
-          visual weight instead of sitting flush against the background. */}
-      <section className=" py-16 sm:py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="relative overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-violetSoft via-white to-surface px-6 sm:px-14 py-14 sm:py-16 text-center">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0"
-              style={{
-                backgroundImage: "radial-gradient(#D6CBF2 1px, transparent 1px)",
-                backgroundSize: "22px 22px",
-                WebkitMaskImage: "radial-gradient(ellipse 75% 70% at 50% 30%, black, transparent)",
-                maskImage: "radial-gradient(ellipse 75% 70% at 50% 30%, black, transparent)",
-              }}
-            />
-            <div aria-hidden className="pointer-events-none absolute -top-24 -right-16 w-72 h-72 rounded-full bg-violet/20 blur-3xl" />
-            <div aria-hidden className="pointer-events-none absolute -bottom-28 -left-16 w-72 h-72 rounded-full bg-mint/15 blur-3xl" />
-
-            <div className="relative">
-              <h2 className="font-display text-2xl sm:text-3xl font-bold mb-3">
-                Ready to find a role that actually fits?
-              </h2>
-              <p className="text-slate mb-8 max-w-lg mx-auto">
-                Upload your resume once and let the AI do the matching across every
-                platform we track.
+      {/* FAQ + Final CTA — side by side on larger screens so the page
+          closes with two focal points at once instead of one long
+          scroll; stacks to a single column on mobile where two-up
+          would feel cramped. */}
+      <section className="border-t border-line bg-gradient-to-b from-surface to-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20 grid gap-12 lg:grid-cols-2 lg:items-stretch">
+          <div id="faq" className="scroll-mt-20">
+            <div className="text-center lg:text-left mb-12">
+              <p className="font-mono text-xs tracking-[0.2em] text-violet font-semibold uppercase mb-3">
+                You want to know
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                <a
-                  href="/resume"
-                  className="w-full sm:w-auto text-center bg-violet text-white px-7 py-3.5 rounded-full font-medium shadow-lg shadow-violet/20 hover:bg-violet/90 focus-visible:bg-violet/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet focus-visible:ring-offset-2 active:scale-[0.98] transition-all"
+              <h2 className="font-serif text-3xl sm:text-4xl font-medium text-ink">
+                Frequently Asked Questions
+              </h2>
+            </div>
+            <div className="space-y-4">
+              {FAQS.map((item, i) => (
+                <details
+                  key={item.q}
+                  open={i === 0}
+                  className="group relative rounded-2xl bg-white shadow-sm shadow-ink/[0.03] overflow-hidden"
                 >
-                  Match my resume
-                </a>
-                <a
-                  href="#jobs"
-                  className="w-full sm:w-auto text-center border border-line bg-white px-7 py-3.5 rounded-full font-medium hover:border-violet hover:text-violet focus-visible:border-violet focus-visible:text-violet focus-visible:outline-none active:scale-[0.98] transition-all"
-                >
-                  Browse jobs first
-                </a>
+                  <span
+                    aria-hidden
+                    className="absolute left-0 top-0 bottom-0 w-1 bg-line group-open:bg-violet transition-colors"
+                  />
+                  <summary className="flex items-center justify-between gap-4 cursor-pointer list-none font-semibold text-ink pl-6 pr-5 sm:pr-6 py-5">
+                    {item.q}
+                    <span className="text-ink shrink-0 w-5 h-5 group-open:rotate-180 transition-transform">
+                      <ChevronDownIcon />
+                    </span>
+                  </summary>
+                  <p className="text-sm sm:text-base text-slate leading-relaxed pl-6 pr-6 sm:pr-10 pb-6">
+                    {item.a}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </div>
+
+          <div className="lg:h-full">
+            <div className="relative overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-violetSoft via-white to-surface px-6 sm:px-10 py-14 sm:py-16 text-center h-full flex flex-col justify-center">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  backgroundImage: "radial-gradient(#D6CBF2 1px, transparent 1px)",
+                  backgroundSize: "22px 22px",
+                  WebkitMaskImage: "radial-gradient(ellipse 75% 70% at 50% 30%, black, transparent)",
+                  maskImage: "radial-gradient(ellipse 75% 70% at 50% 30%, black, transparent)",
+                }}
+              />
+              <div aria-hidden className="pointer-events-none absolute -top-24 -right-16 w-72 h-72 rounded-full bg-violet/20 blur-3xl" />
+              <div aria-hidden className="pointer-events-none absolute -bottom-28 -left-16 w-72 h-72 rounded-full bg-mint/15 blur-3xl" />
+
+              <div className="relative">
+                <h2 className="font-display text-2xl sm:text-3xl font-bold mb-3">
+                  Ready to find a role that actually fits?
+                </h2>
+                <p className="text-slate mb-8 max-w-lg mx-auto">
+                  Upload your resume once and let the AI do the matching across every
+                  platform we track.
+                </p>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                  <a
+                    href="/resume"
+                    className="w-full sm:w-auto text-center bg-violet text-white px-7 py-3.5 rounded-full font-medium shadow-lg shadow-violet/20 hover:bg-violet/90 focus-visible:bg-violet/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet focus-visible:ring-offset-2 active:scale-[0.98] transition-all"
+                  >
+                    Match my resume
+                  </a>
+                  <a
+                    href="#jobs"
+                    className="w-full sm:w-auto text-center border border-line bg-white px-7 py-3.5 rounded-full font-medium hover:border-violet hover:text-violet focus-visible:border-violet focus-visible:text-violet focus-visible:outline-none active:scale-[0.98] transition-all"
+                  >
+                    Browse jobs first
+                  </a>
+                </div>
               </div>
             </div>
           </div>

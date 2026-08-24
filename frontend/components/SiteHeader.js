@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Logo from "@/components/Logo";
+import Image from "next/image";
 import NavAuth from "@/components/NavAuth";
 
 const NAV_GROUPS = [
@@ -95,8 +95,9 @@ export default function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/80 backdrop-blur-md supports-[backdrop-filter]:bg-paper/70">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
-        <a href="/" className="shrink-0 text-violet text-2xl font-bold " onClick={() => setMobileOpen(false)} >
-          JobBoard
+        <a href="/" className="shrink-0 flex items-center gap-2" onClick={() => setMobileOpen(false)} >
+          <Image src="/logo-1.png" alt="JobBoard logo" width={40} height={40} priority  />
+          <span className="text-violet text-2xl font-bold">JobBoard</span>
         </a>
 
         <nav className="hidden sm:flex items-center gap-6 text-sm">

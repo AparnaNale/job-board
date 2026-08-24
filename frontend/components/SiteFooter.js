@@ -1,4 +1,4 @@
-import Logo from "@/components/Logo";
+import Image from "next/image";
 
 const FOOTER_COLUMNS = [
   {
@@ -22,11 +22,29 @@ const FOOTER_COLUMNS = [
 
 export default function SiteFooter() {
   return (
-    <footer className="bg-gradient-to-b from-surface to-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-14 sm:pt-16 pb-8">
+    <footer className="bg-[#F6F5F9] relative overflow-hidden">
+      <svg
+        aria-hidden
+        className="pointer-events-none absolute inset-0 w-full h-full"
+        viewBox="0 0 1440 560"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0,130 C220,190 380,60 620,100 C860,140 1040,70 1440,140 L1440,560 L0,560 Z"
+          fill="#ECE9F2"
+        />
+        <path
+          d="M0,230 C260,180 460,300 720,240 C980,180 1180,270 1440,220 L1440,560 L0,560 Z"
+          fill="#E2DEEC"
+          opacity="0.75"
+        />
+      </svg>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-14 sm:pt-16 pb-8 relative">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr]">
           <div className="sm:col-span-2 lg:col-span-1">
-            <a href="/" className="text-violet font-bold text-2xl ">
+            <a href="/" className="flex items-center gap-2 text-violet font-bold text-2xl">
+              <Image src="/logo.png" alt="JobBoard logo" width={32} height={32} />
               JobBoard
             </a>
             <p className="text-sm text-slate mt-4 max-w-[32ch] lg:max-w-[26ch] leading-relaxed">
