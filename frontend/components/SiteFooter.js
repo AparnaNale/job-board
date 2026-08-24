@@ -44,7 +44,7 @@ export default function SiteFooter() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr]">
           <div className="sm:col-span-2 lg:col-span-1">
             <a href="/" className="flex items-center gap-2 text-violet font-bold text-2xl">
-              <Image src="/logo.png" alt="JobBoard logo" width={32} height={32} />
+              <Image src="/logo-1.png" alt="JobBoard logo" width={32} height={32} />
               JobBoard
             </a>
             <p className="text-sm text-slate mt-4 max-w-[32ch] lg:max-w-[26ch] leading-relaxed">
